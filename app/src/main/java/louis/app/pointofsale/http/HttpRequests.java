@@ -1,7 +1,5 @@
 package louis.app.pointofsale.http;
 
-import android.content.Intent;
-
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -17,7 +15,6 @@ import cz.msebera.android.httpclient.Header;
 import louis.Utils;
 import louis.app.pointofsale.MainActivity;
 import louis.app.pointofsale.NewSaleActivity;
-import louis.app.pointofsale.UtilMethods;
 import louis.app.pointofsale.dao.ProductsDAO;
 import louis.app.pointofsale.dao.SettingsDAO;
 import louis.app.pointofsale.dto.LoginStatus;

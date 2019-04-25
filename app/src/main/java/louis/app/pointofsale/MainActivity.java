@@ -2,11 +2,9 @@ package louis.app.pointofsale;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,24 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 
-import cz.msebera.android.httpclient.Header;
-import louis.Utils;
 import louis.app.pointofsale.dao.SettingsDAO;
-import louis.app.pointofsale.dto.LoginStatus;
 import louis.app.pointofsale.dto.SettingsDTO;
 import louis.app.pointofsale.http.HttpRequests;
-import louis.app.pointofsale.http.HttpUtils;
 import louis.log.Log;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.INTERNET}, REQUEST_INTERNET_PERMISSION);
         }
+
         SettingsDAO.APP_CONFIG_FOLDER = getApplicationContext().getFilesDir().getAbsolutePath() + "/Config";
-        Log.info("App config folder: " + SettingsDAO.APP_CONFIG_FOLDER);
+        Log.info("App config folder: " + SettingsDAO.APP_CONFIG_FOLDER, true);
         File appSettingsFolder = new File(SettingsDAO.APP_CONFIG_FOLDER);
         if(!appSettingsFolder.exists()) {
             Log.info("Creating app config folder...");
@@ -78,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
         SettingsDTO vSettingsDTO =  SettingsDAO.getInstance().getSettings();
         if(vSettingsDTO.isStayLogedIn()) {
-            Log.info("Attempting Autologin", true);
+            Log.info("Attempting Autologin");
             doLogin(vSettingsDTO.getUserName(), vSettingsDTO.getPassword(), vSettingsDTO.isStayLogedIn());
         }
 
         mEdtUsername = (EditText) findViewById(R.id.edtUsername);
         mEdtUsername.setText(vSettingsDTO.getUserName());
         mEdtPassword = (EditText) findViewById(R.id.edtPassword);
-        mEdtUsername.setText(vSettingsDTO.getPassword());
+        mEdtPassword.setText(vSettingsDTO.getPassword());
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
         mSwRemeberMe = (Switch) findViewById(R.id.swStayLoggedIn);
         mSwRemeberMe.setChecked(vSettingsDTO.isStayLogedIn());

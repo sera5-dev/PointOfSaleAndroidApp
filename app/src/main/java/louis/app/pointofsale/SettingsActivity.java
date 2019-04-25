@@ -10,7 +10,6 @@ import android.widget.EditText;
 import louis.Utils;
 import louis.app.pointofsale.dao.SettingsDAO;
 import louis.app.pointofsale.dto.SettingsDTO;
-import louis.log.Log;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -57,6 +56,14 @@ public class SettingsActivity extends AppCompatActivity {
                     SettingsDAO.getInstance().setSettings(mSettings);
                     finish();
                 }
+            }
+        });
+
+        Button vCancelButton = findViewById(R.id.btnCancel);
+        vCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

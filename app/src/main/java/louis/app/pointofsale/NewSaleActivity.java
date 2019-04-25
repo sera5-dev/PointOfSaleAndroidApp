@@ -1,14 +1,11 @@
 package louis.app.pointofsale;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -22,7 +19,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -30,10 +26,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
-
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Set;
 
 import louis.Utils;
 import louis.app.pointofsale.dao.ProductsDAO;
@@ -192,7 +184,7 @@ public class NewSaleActivity extends AppCompatActivity {
     }
 
     public void productGetDone() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ProductsDAO.getLabelNames());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.hint_completion_layout, R.id.tvHintCompletion, ProductsDAO.getLabelNames());
         mEdtLabel.setAdapter(adapter);
         mEdtLabel.addTextChangedListener(new TextWatcher() {
             @Override
@@ -212,6 +204,10 @@ public class NewSaleActivity extends AppCompatActivity {
                     mnedQuantity.setText("0");
                     mtrProductInfo.setVisibility(View.VISIBLE);
                     mtrQuantity.setVisibility(View.VISIBLE);
+                    if(mnedQuantity.requestFocus()) {
+                        mnedQuantity.setText("");
+                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    }
                 } else {
                     mSelectedProduct = null;
                     mtrProductInfo.setVisibility(View.INVISIBLE);

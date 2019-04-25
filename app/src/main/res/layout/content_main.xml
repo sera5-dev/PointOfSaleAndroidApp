@@ -10,54 +10,76 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="fill"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_margin="1dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username:   "
+                android:layout_marginRight="15dp"
+                android:text="Username:"
                 android:textAlignment="textEnd"
-                android:textSize="18sp" />
+                android:textSize="@dimen/login_font_size" />
 
             <EditText
                 android:id="@+id/edtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:ems="10"
                 android:hint="Username"
-                android:inputType="textPersonName"/>
-        </TableRow>n
+                android:textSize="@dimen/login_font_size"
+                android:inputType="textPersonName" />
+        </TableRow>
+        n
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_margin="1dp">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="Password:   "
+                android:layout_marginRight="10dp"
+                android:text="Password: "
                 android:textAlignment="textEnd"
-                android:textSize="18sp" />
+                android:textSize="@dimen/login_font_size" />
 
             <EditText
                 android:id="@+id/edtPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:textSize="@dimen/login_font_size"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_margin="1dp">
 
             <Space
                 android:layout_width="wrap_content"
@@ -67,12 +89,14 @@
                 android:id="@+id/swStayLoggedIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/login_font_size"
                 android:text="Remember Me" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_margin="1dp">
 
             <Space
                 android:layout_width="wrap_content"
@@ -82,6 +106,7 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/login_font_size"
                 android:text="Login" />
         </TableRow>
     </TableLayout>

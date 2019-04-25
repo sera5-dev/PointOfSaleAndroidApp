@@ -1,7 +1,5 @@
 package louis.app.pointofsale.dao;
 
-import java.io.File;
-
 import louis.Utils;
 import louis.app.pointofsale.dto.LoginStatus;
 import louis.app.pointofsale.dto.SettingsDTO;
